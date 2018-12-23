@@ -3,6 +3,7 @@
 #include <string>
 #include <regex>
 #include <exception>
+#include <set>
 
 class InputHandler
 {
@@ -16,6 +17,7 @@ public:
 	InputHandler(const std::string & input);
 	void Split(const std::string & regex);
 	std::vector<std::pair<int,int>> GetResult() const;
+	std::string ResultToString(const std::set<int> res);
 
 };
 

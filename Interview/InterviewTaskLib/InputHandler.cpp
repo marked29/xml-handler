@@ -38,3 +38,13 @@ std::vector<std::pair<int,int>> InputHandler::GetResult() const
 {
 	return m_IntervalContainer;
 }
+
+std::string InputHandler::ResultToString(const std::set<int> res)
+{
+	std::string handler("");
+	for (auto &elem : res)
+	{
+		handler += std::to_string(elem) + " ";
+	}
+	return handler;
+}

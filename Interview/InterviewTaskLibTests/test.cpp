@@ -453,6 +453,3 @@ TEST(Output, ExplicitConstructionEndTag)
 		}
 		}, std::exception);
 }
-
-
-

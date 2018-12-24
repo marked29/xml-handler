@@ -152,6 +152,7 @@
     <ClInclude Include="Output.h" />
     <ClInclude Include="PrimeNumberCounter.h" />
     <ClInclude Include="ThreadPool.h" />
+    <ClInclude Include="XmlHandlerInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Input.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="PrimeNumberCounter.cpp" />
     <ClCompile Include="ThreadPool.cpp" />
+    <ClCompile Include="XmlHandlerInterface.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

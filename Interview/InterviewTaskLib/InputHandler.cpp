@@ -6,6 +6,11 @@ void InputHandler::m_StructureFormer(const std::vector<std::string>& info)
 	{
 		throw std::exception("Couldn't be sliced into pairs");
 	}
+	if (info.empty())
+	{
+		throw std::exception("Empty input");
+	}
+
 	m_IntervalContainer.reserve(info.size() / 2);
 	for (size_t i = 0; i < info.size(); i += 2)
 	{
@@ -26,7 +31,7 @@ void InputHandler::Split(const std::string & regex)
 
 	std::regex re(regex);
 	std::sregex_token_iterator first{ m_InputBuffer.begin(), m_InputBuffer.end(), re, -1 },
-		last;
+							   last;
 
 	std::vector<std::string> splitted(first, last);
 	splitted.erase(std::remove(splitted.begin(), splitted.end(), ""), splitted.end());
@@ -39,8 +44,13 @@ std::vector<std::pair<int,int>> InputHandler::GetResult() const
 	return m_IntervalContainer;
 }
 
-std::string InputHandler::ResultToString(const std::set<int> res)
+std::string InputHandler::ResultToString(const std::set<int>& res)
 {
+	if (res.empty())
+	{
+		throw std::exception("Input value is empty");
+	}
+
 	std::string handler("");
 	for (auto &elem : res)
 	{

@@ -1,5 +1,13 @@
 #include "Output.h"
 
+void Output::m_Check()
+{
+	if (!(m_OutFile.is_open()))
+	{
+		throw std::exception("File is not opened");
+	}
+}
+
 Output::Output(const std::string fileName) :
 	m_OutFile(fileName),
 	m_Indent{ 0 },
@@ -18,10 +26,7 @@ Output::~Output()
 
 void Output::WriteOpenTag(const std::string & openTag)
 {
-	if (!(m_OutFile.is_open()))
-	{
-		throw std::exception("File is not opened");
-	}
+	m_Check();
 	for (size_t i = 0; i < m_Indent; i++)
 	{
 		m_OutFile << "\t";
@@ -35,9 +40,10 @@ void Output::WriteOpenTag(const std::string & openTag)
 
 void Output::WriteCloseTag()
 {
-	if (!(m_OutFile.is_open()))
+	m_Check();
+	if (m_TempOpenTag.empty())
 	{
-		throw std::exception("File is not opened");
+		throw std::exception("No open tags found");
 	}
 	m_Indent-- ;
 	for (int i = 0; i < m_Indent; i++) {
@@ -51,10 +57,7 @@ void Output::WriteCloseTag()
 
 void Output::WriteStartElementTag(const std::string & elementTag)
 {
-	if (!(m_OutFile.is_open()))
-	{
-		throw std::exception("File is closed");
-	}
+	m_Check();
 	for (int i = 0; i < m_Indent; i++) {
 		m_OutFile << "\t";
 	}
@@ -66,9 +69,10 @@ void Output::WriteStartElementTag(const std::string & elementTag)
 
 void Output::WriteEndElementTag()
 {
-	if (!(m_OutFile.is_open()))
+	m_Check();
+	if (m_TempElementTag.empty())
 	{
-		throw std::exception("File is closed");
+		throw std::exception("No open element tags found");
 	}
 	m_OutFile << "</" << m_TempElementTag[m_OpenElements - 1] << ">\n";
 	m_TempElementTag.resize(m_OpenElements - 1);
@@ -77,9 +81,6 @@ void Output::WriteEndElementTag()
 
 void Output::WriteString(const std::string & input)
 {
-	if (!(m_OutFile.is_open()))
-	{
-		throw std::exception("File is closed");
-	}
+	m_Check();
 	m_OutFile << ">" << input;
 }

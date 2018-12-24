@@ -11,7 +11,8 @@ private:
 	std::mutex m_Mtx;
 	std::vector<std::pair<int, int>> m_Intervals;
 public:
-	explicit PrimeNumberCounter(const std::vector<std::pair<int, int>> & intervals);
+	PrimeNumberCounter() = default;
+	PrimeNumberCounter(const std::vector<std::pair<int, int>> & intervals);
 	size_t GetIntervalAmount() const;
 	void PrimeNumbers(std::pair<int, int> &intervals);
 	std::set<int> GetResult() const;

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "InterviewTaskLib/Input.h"
 #include "InterviewTaskLib/InputHandler.h"
 #include "InterviewTaskLib/Output.h"

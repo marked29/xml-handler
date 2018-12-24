@@ -12,9 +12,14 @@ private:
 	int m_OpenElements;
 	std::vector<std::string> m_TempOpenTag;
 	std::vector<std::string> m_TempElementTag;
+
+	void m_Check();
+
 public:
 	Output() = default;
 	explicit Output(const std::string fileName);
+	Output(const Output&) = delete;
+	Output operator=(const Output&) = delete;
 	~Output();
 
 	void WriteOpenTag(const std::string &openTag);

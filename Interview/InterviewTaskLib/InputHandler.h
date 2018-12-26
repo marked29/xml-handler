@@ -15,7 +15,7 @@ private:
 public:
 	InputHandler() = default;
 	InputHandler(const std::string & input);
-	void Split(const std::string & regex);
+	void ParseInput(const std::string & regex);
 	std::vector<std::pair<int,int>> GetResult() const;
 	std::string ResultToString(const std::set<int> & res);
 

@@ -22,7 +22,7 @@ InputHandler::InputHandler(const std::string & input) : m_InputBuffer(input)
 {
 }
 
-void InputHandler::Split(const std::string & regex)
+void InputHandler::ParseInput(const std::string & regex)
 {
 	if (m_InputBuffer.empty())
 	{

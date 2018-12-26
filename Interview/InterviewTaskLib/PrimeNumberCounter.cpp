@@ -1,15 +1,8 @@
 #include "PrimeNumberCounter.h"
 
-PrimeNumberCounter::PrimeNumberCounter(const std::vector<std::pair<int, int>>& intervals) : m_Intervals(intervals)
-{
-}
 
-size_t PrimeNumberCounter::GetIntervalAmount() const 
-{
-	return m_Intervals.size();
-}
 
-void PrimeNumberCounter::PrimeNumbers(std::pair<int, int>& intervals)
+void PrimeNumberCounter::CalcAndAccumulatePrimes(std::pair<int, int>& intervals)
 {
 	bool flag = false;
 	if (intervals.first > intervals.second)

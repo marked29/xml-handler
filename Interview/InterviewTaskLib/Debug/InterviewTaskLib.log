@@ -1,2 +1,9 @@
-﻿  XmlHandlerInterface.cpp
+﻿  Input.cpp
+  InputHandler.cpp
+  Output.cpp
+d:\interview\interviewtasklib\output.cpp(30): warning C4018: '<': signed/unsigned mismatch
+  PrimeNumberCounter.cpp
+  ThreadPool.cpp
+  XmlHandlerInterface.cpp
+  Generating Code...
   InterviewTaskLib.vcxproj -> D:\Interview\Debug\InterviewTaskLib.lib

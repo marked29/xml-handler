@@ -7,34 +7,10 @@
 #include "InterviewTaskLib/ThreadPool.h"
 #include <algorithm>
 
-TEST(PrimeNumberCounter, DefaultConstruction) {
-
-	PrimeNumberCounter primeCounter;
-	EXPECT_EQ(0, primeCounter.GetIntervalAmount());
-}
-
-TEST(PrimeNumberCounter, ExplicitConstruction) {
-
-	std::vector<std::pair<int, int>> intervals;
-	intervals.push_back({ 100,200 });
-	intervals.push_back({ 500,888 });
-
-	PrimeNumberCounter primeCounter(intervals);
-	EXPECT_EQ(2, primeCounter.GetIntervalAmount());
-}
-
-TEST(PrimeNumberCounter, ExplicitEmptyConstruction) {
-
-	std::vector<std::pair<int, int>> intervals;
-
-	PrimeNumberCounter primeCounter(intervals);
-	EXPECT_EQ(0, primeCounter.GetIntervalAmount());
-}
-
 TEST(PrimeNumberCounter, EmptyResult) {
 
 	std::vector<std::pair<int, int>> intervals;
-	PrimeNumberCounter primeCounter(intervals);
+	PrimeNumberCounter primeCounter;
 	auto var = primeCounter.GetResult();
 
 	EXPECT_TRUE(var.empty());
@@ -43,7 +19,7 @@ TEST(PrimeNumberCounter, EmptyResult) {
 TEST(PrimeNumberCounter, CorrectIntervalInput) {
 		
 	PrimeNumberCounter primeCounter;
-	primeCounter.PrimeNumbers(std::make_pair(0,10));
+	primeCounter.CalcAndAccumulatePrimes(std::make_pair(0,10));
 		
 	auto var = primeCounter.GetResult();
 	std::vector<int> primeNum = { 2,3,5,7 };
@@ -54,7 +30,7 @@ TEST(PrimeNumberCounter, CorrectIntervalInput) {
 TEST(PrimeNumberCounter, SwappedIntervalInput) {
 
 	PrimeNumberCounter primeCounter;
-	primeCounter.PrimeNumbers(std::make_pair(10, 0));
+	primeCounter.CalcAndAccumulatePrimes(std::make_pair(10, 0));
 
 	auto var = primeCounter.GetResult();
 	std::vector<int> primeNum = { 2,3,5,7 };
@@ -65,7 +41,7 @@ TEST(PrimeNumberCounter, SwappedIntervalInput) {
 TEST(PrimeNumberCounter, EqualIntervalInput) {
 
 	PrimeNumberCounter primeCounter;
-	primeCounter.PrimeNumbers(std::make_pair(2, 2));
+	primeCounter.CalcAndAccumulatePrimes(std::make_pair(2, 2));
 
 	auto var = primeCounter.GetResult();
 	std::vector<int> primeNum = { 2,3,5,7 };
@@ -85,7 +61,7 @@ TEST(InputHandler, DefaultConstructingSplitting)
 	EXPECT_THROW({
 	try
 	{
-		Handler.Split("\\D");
+		Handler.ParseInput("\\D");
 	}
 	catch (const std::exception& e)
 	{
@@ -141,7 +117,7 @@ TEST(InputHandler, ExplicitConstructingEmptyStringSplit)
 	EXPECT_THROW({
 		try
 		{
-			Handler.Split("\\D");
+			Handler.ParseInput("\\D");
 		}
 		catch (const std::exception& e)
 		{
@@ -157,7 +133,7 @@ TEST(InputHandler, ExplicitConstructingSplit)
 	EXPECT_THROW({
 		try
 		{
-			Handler.Split("\\D");
+			Handler.ParseInput("\\D");
 		}
 		catch (const std::exception& e)
 		{
@@ -172,7 +148,7 @@ TEST(InputHandler, ExplicitConstructingNotEvenSplit)
 	EXPECT_THROW({
 		try
 		{
-			Handler.Split("\\D");
+			Handler.ParseInput("\\D");
 		}
 		catch (const std::exception& e)
 		{
@@ -188,7 +164,7 @@ TEST(InputHandler, ExplicitConstructingBadSplit)
 	EXPECT_THROW({
 		try
 		{
-			Handler.Split("\\D");
+			Handler.ParseInput("\\D");
 		}
 		catch (const std::exception& e)
 		{
@@ -201,7 +177,7 @@ TEST(InputHandler, ExplicitConstructingBadSplit)
 TEST(InputHandler, ExplicitConstructingCorrectSplit)
 {
 	InputHandler Handler("asd1asd10");
-	Handler.Split("\\D");
+	Handler.ParseInput("\\D");
 	auto var = Handler.GetResult();
 	EXPECT_EQ(1, var[0].first);
 }

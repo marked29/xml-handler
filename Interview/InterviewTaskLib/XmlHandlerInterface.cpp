@@ -22,15 +22,15 @@ void XmlHandlerInterface::WorkFlow()
 		Input fileHandler(m_Input);
 		fileHandler.GetFile();
 		InputHandler handler(fileHandler.GetBuffer());
-		handler.Split("\\D");
+		handler.ParseInput("\\D");
 		auto var = handler.GetResult();
 
-		PrimeNumberCounter primeCounter(var);
+		PrimeNumberCounter primeCounter;
 		{
-			ThreadPool pool{ primeCounter.GetIntervalAmount() };
+			ThreadPool pool{ var.size() };
 			for (auto & elem : var)
 			{
-				pool.Post([&]() { primeCounter.PrimeNumbers(elem); });
+				pool.Post([&]() { primeCounter.CalcAndAccumulatePrimes(elem); });
 			}
 			pool.Destroy();
 		}

@@ -1,6 +1,6 @@
 #include "ThreadPool.h"
 
-void ThreadPool::Start(size_t threadCount)
+void ThreadPool::Start(const size_t &threadCount)
 {
 	for (size_t i = 0; i < threadCount; i++)
 	{

@@ -8,7 +8,7 @@ void Output::m_Check()
 	}
 }
 
-Output::Output(const std::string fileName) :
+Output::Output(const std::string & fileName) :
 	m_OutFile(fileName),
 	m_Indent{ 0 },
 	m_OpenTags{ 0 },

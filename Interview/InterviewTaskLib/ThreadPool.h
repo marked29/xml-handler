@@ -18,7 +18,7 @@ private:
 	std::mutex m_EventMtx;
 	bool m_Stopping = false;
 
-	void Start(size_t threadCount);
+	void Start(const size_t & threadCount);
 
 public:
 	explicit ThreadPool(size_t threadCount);

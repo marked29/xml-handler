@@ -17,7 +17,7 @@ private:
 
 public:
 	Output() = default;
-	explicit Output(const std::string fileName);
+	explicit Output(const std::string & fileName);
 	Output(const Output&) = delete;
 	Output operator=(const Output&) = delete;
 	~Output();

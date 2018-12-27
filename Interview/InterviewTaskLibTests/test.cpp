@@ -61,7 +61,7 @@ TEST(InputHandler, DefaultConstructingSplitting)
 	EXPECT_THROW({
 	try
 	{
-		Handler.ParseInput("\\D");
+		Handler.ParseInput();
 	}
 	catch (const std::exception& e)
 	{
@@ -117,7 +117,7 @@ TEST(InputHandler, ExplicitConstructingEmptyStringSplit)
 	EXPECT_THROW({
 		try
 		{
-			Handler.ParseInput("\\D");
+			Handler.ParseInput();
 		}
 		catch (const std::exception& e)
 		{
@@ -133,7 +133,7 @@ TEST(InputHandler, ExplicitConstructingSplit)
 	EXPECT_THROW({
 		try
 		{
-			Handler.ParseInput("\\D");
+			Handler.ParseInput();
 		}
 		catch (const std::exception& e)
 		{
@@ -148,7 +148,7 @@ TEST(InputHandler, ExplicitConstructingNotEvenSplit)
 	EXPECT_THROW({
 		try
 		{
-			Handler.ParseInput("\\D");
+			Handler.ParseInput();
 		}
 		catch (const std::exception& e)
 		{
@@ -164,7 +164,7 @@ TEST(InputHandler, ExplicitConstructingBadSplit)
 	EXPECT_THROW({
 		try
 		{
-			Handler.ParseInput("\\D");
+			Handler.ParseInput();
 		}
 		catch (const std::exception& e)
 		{
@@ -177,7 +177,7 @@ TEST(InputHandler, ExplicitConstructingBadSplit)
 TEST(InputHandler, ExplicitConstructingCorrectSplit)
 {
 	InputHandler Handler("asd1asd10");
-	Handler.ParseInput("\\D");
+	Handler.ParseInput();
 	auto var = Handler.GetResult();
 	EXPECT_EQ(1, var[0].first);
 }

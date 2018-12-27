@@ -22,12 +22,12 @@ void XmlHandlerInterface::WorkFlow()
 		Input fileHandler(m_Input);
 		fileHandler.GetFile();
 		InputHandler handler(fileHandler.GetBuffer());
-		handler.ParseInput("\\D");
+		handler.ParseInput();
 		auto var = handler.GetResult();
 
 		PrimeNumberCounter primeCounter;
 		{
-			ThreadPool pool{ var.size() };
+			ThreadPool pool{ std::thread::hardware_concurrency() };
 			for (auto & elem : var)
 			{
 				pool.Post([&]() { primeCounter.CalcAndAccumulatePrimes(elem); });

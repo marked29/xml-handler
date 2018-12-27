@@ -22,14 +22,14 @@ InputHandler::InputHandler(const std::string & input) : m_InputBuffer(input)
 {
 }
 
-void InputHandler::ParseInput(const std::string & regex)
+void InputHandler::ParseInput()
 {
 	if (m_InputBuffer.empty())
 	{
 		throw std::exception("Input is empty");
 	}
 
-	std::regex re(regex);
+	std::regex re("\\D");
 	std::sregex_token_iterator first{ m_InputBuffer.begin(), m_InputBuffer.end(), re, -1 },
 							   last;
 

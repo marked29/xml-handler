@@ -14,6 +14,7 @@ void ThreadPool::Start(const size_t &threadCount)
 					m_EventVar.wait(lock, [=] {return m_Stopping || !m_Tasker.empty(); });
 					if (m_Stopping && m_Tasker.empty())
 						break;
+					
 					Task = std::move(m_Tasker.front());
 					m_Tasker.pop();
 

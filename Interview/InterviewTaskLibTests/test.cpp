@@ -182,6 +182,16 @@ TEST(InputHandler, ExplicitConstructingCorrectSplit)
 	EXPECT_EQ(1, var[0].first);
 }
 
+
+TEST(InputHandler, ExplicitConstructingCorrectSplit2)
+{
+	InputHandler Handler("beg1end10beg10end20beg30end40beg1end100");
+	Handler.ParseInput();
+	auto var = Handler.GetResult();
+	EXPECT_EQ(1, var.size());
+}
+
+
 TEST(InputHandler, ExplicitConstructingUnhandledInput)
 {
 	InputHandler Handler("sadsdad1aadasdad2asdasd3dvfdsf4");

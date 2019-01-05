@@ -13,10 +13,10 @@ private:
 
 public:
 	Input() = default;
-	explicit Input(const Input&) = delete;
 	Input(const std::string & m_fileName);
-	~Input();
+	Input(const Input&) = delete;
 	Input operator=(const Input&) = delete;
+	~Input();
 	void GetFile();
 	std::string GetBuffer() const;
 	

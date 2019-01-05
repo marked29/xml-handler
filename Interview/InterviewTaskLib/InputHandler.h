@@ -9,7 +9,9 @@ class InputHandler
 {
 private:
 	std::string m_InputBuffer;
-	std::vector<std::pair<int, int>> m_IntervalContainer;
+	std::vector<std::pair<int, int>> m_ResultIntervals;
+
+	std::vector<std::pair<int, int>> m_MergeInterval(std::vector<std::pair<int, int>>& intervals);
 	void m_StructureFormer(const std::vector<std::string> &info);
 
 public:
@@ -17,6 +19,8 @@ public:
 	InputHandler(const std::string & input);
 	void ParseInput();
 	std::vector<std::pair<int,int>> GetResult() const;
+
+
 	std::string ResultToString(const std::set<int> & res);
 
 };

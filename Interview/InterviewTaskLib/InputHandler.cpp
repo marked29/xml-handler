@@ -1,5 +1,33 @@
 #include "InputHandler.h"
 
+std::vector<std::pair<int, int>> InputHandler::m_MergeInterval(std::vector<std::pair<int, int>>& intervals)
+{
+	if (intervals.empty())
+	{
+		throw std::exception("Vector is empty");
+	}
+
+
+	std::vector<std::pair<int, int>> result;
+	sort(intervals.begin(), intervals.end());
+	std::pair<int, int> current = intervals[0];
+
+	for (auto & elem : intervals)
+	{
+		if (current.second > elem.first)
+		{
+			current.second = std::max(current.second, elem.second);
+		}
+		else
+		{
+			result.push_back(current);
+			current = elem;
+		}
+	}
+	result.push_back(current);
+	return result;
+}
+
 void InputHandler::m_StructureFormer(const std::vector<std::string>& info)
 {
 	if (!(info.size() % 2 == 0))
@@ -11,11 +39,13 @@ void InputHandler::m_StructureFormer(const std::vector<std::string>& info)
 		throw std::exception("Empty input");
 	}
 
-	m_IntervalContainer.reserve(info.size() / 2);
+	std::vector<std::pair<int, int>> IntervalContainer;
+	IntervalContainer.reserve(info.size() / 2);
 	for (size_t i = 0; i < info.size(); i += 2)
 	{
-		m_IntervalContainer.push_back({ stoi(info[i]), stoi(info[i + 1]) });
+		IntervalContainer.push_back({ stoi(info[i]), stoi(info[i + 1]) });
 	}
+	m_ResultIntervals = m_MergeInterval(IntervalContainer);
 }
 
 InputHandler::InputHandler(const std::string & input) : m_InputBuffer(input)
@@ -41,7 +71,7 @@ void InputHandler::ParseInput()
 
 std::vector<std::pair<int,int>> InputHandler::GetResult() const
 {
-	return m_IntervalContainer;
+	return m_ResultIntervals;
 }
 
 std::string InputHandler::ResultToString(const std::set<int>& res)

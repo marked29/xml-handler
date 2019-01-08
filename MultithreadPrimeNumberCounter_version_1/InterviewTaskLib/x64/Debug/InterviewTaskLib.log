@@ -1,0 +1,8 @@
+﻿  Input.cpp
+  InputHandler.cpp
+  Output.cpp
+  PrimeNumberCounter.cpp
+  ThreadPool.cpp
+  XmlHandlerInterface.cpp
+  Generating Code...
+  InterviewTaskLib.vcxproj -> D:\Новая папка\xml-handler\MultithreadPrimeNumberCounter_version_1\x64\Debug\InterviewTaskLib.lib

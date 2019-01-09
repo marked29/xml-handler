@@ -1,9 +1,0 @@
-﻿  Input.cpp
-  InputHandler.cpp
-  Output.cpp
-d:\новая папка\xml-handler\interview\interviewtasklib\output.cpp(30): warning C4018: '<': signed/unsigned mismatch
-  PrimeNumberCounter.cpp
-  ThreadPool.cpp
-  XmlHandlerInterface.cpp
-  Generating Code...
-  InterviewTaskLib.vcxproj -> D:\Новая папка\xml-handler\Interview\Debug\InterviewTaskLib.lib
